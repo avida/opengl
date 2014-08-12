@@ -13,5 +13,5 @@ private:
 	int m_height, m_width;
 	png_byte color_type;
 	png_byte bit_depth;
-	png_bytep * row_pointers;	
+	png_byte *row_pointers;	
 };

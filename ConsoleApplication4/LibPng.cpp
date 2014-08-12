@@ -76,12 +76,20 @@ int LibPng::Load()
 			return 1;
 	}
 
-    row_pointers = (png_bytep*) malloc(sizeof(png_bytep) * m_height);
-    for (int y=0; y<m_height; y++)
-            row_pointers[y] = (png_byte*) malloc(png_get_rowbytes(png_ptr,info_ptr));
+	png_bytep *  lRowPtrs = NULL;
+	png_int_32 lRowSize = png_get_rowbytes(png_ptr,info_ptr);
 
-    png_read_image(png_ptr, row_pointers);
-
+	row_pointers = new png_byte[lRowSize * m_height];
+  lRowPtrs = new png_bytep[m_height];
+  for(int i = 0 ; i < m_height; ++i)
+  {
+	  lRowPtrs[ m_height - (i+1) ] = row_pointers+ i * lRowSize;
+  }
+  png_read_image(png_ptr, lRowPtrs);
     fclose(fp);
+  png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+  delete[] lRowPtrs;
+  return 0;
+
 	return 0;
 }
