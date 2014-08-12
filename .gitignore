@@ -1,0 +1,9 @@
+*.sdf
+*.suo
+Debug
+ipch
+ConsoleApplication4/Debug
+ConsoleApplication4/Release
+*.vcxproj
+*.filters
+*.vcxproj.user
