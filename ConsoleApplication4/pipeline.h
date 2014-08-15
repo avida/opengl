@@ -67,7 +67,7 @@ public:
         m_camera.Up = Up;
     }
 
-    const Matrix4f* GetTrans();
+    const Matrix4f& GetTrans();
 
 private:
     Vector3f m_scale;

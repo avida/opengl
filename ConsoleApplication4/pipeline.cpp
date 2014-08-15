@@ -19,7 +19,7 @@
 #include "pipeline.h"
 
 
-const Matrix4f* Pipeline::GetTrans()
+const Matrix4f& Pipeline::GetTrans()
 {
     Matrix4f ScaleTrans, RotateTrans, TranslationTrans, CameraTranslationTrans, CameraRotateTrans, PersProjTrans;
 
@@ -31,7 +31,7 @@ const Matrix4f* Pipeline::GetTrans()
     PersProjTrans.InitPersProjTransform(m_persProj.FOV, m_persProj.Width, m_persProj.Height, m_persProj.zNear, m_persProj.zFar);
 
     m_transformation = PersProjTrans * CameraRotateTrans * CameraTranslationTrans * TranslationTrans * RotateTrans * ScaleTrans;
-    return &m_transformation;
+    return m_transformation;
 }
 
 

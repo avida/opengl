@@ -85,11 +85,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="callbacks.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="common\ogldev_texture.h" />
     <ClInclude Include="common\ogldev_types.h" />
     <ClInclude Include="common\ogldev_util.h" />
+    <ClInclude Include="common\technique.h" />
+    <ClInclude Include="glut_backend.h" />
     <ClInclude Include="LibPng.h" />
+    <ClInclude Include="lighting_technique.h" />
     <ClInclude Include="math_3d.h" />
     <ClInclude Include="pipeline.h" />
     <ClInclude Include="targetver.h" />
@@ -98,12 +102,17 @@
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="common\ogldev_texture.cpp" />
     <ClCompile Include="common\ogldev_util.cpp" />
+    <ClCompile Include="common\technique.cpp" />
     <ClCompile Include="ConsoleApplication4.cpp" />
+    <ClCompile Include="glut_backend.cpp" />
     <ClCompile Include="LibPng.cpp" />
+    <ClCompile Include="lighting_technique.cpp" />
     <ClCompile Include="math_3d.cpp" />
     <ClCompile Include="pipeline.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="lighting.fs" />
+    <None Include="lighting.vs" />
     <None Include="shader.fs" />
     <None Include="shader.vs" />
   </ItemGroup>

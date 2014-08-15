@@ -80,16 +80,15 @@ int LibPng::Load()
 	png_int_32 lRowSize = png_get_rowbytes(png_ptr,info_ptr);
 
 	row_pointers = new png_byte[lRowSize * m_height];
-  lRowPtrs = new png_bytep[m_height];
-  for(int i = 0 ; i < m_height; ++i)
-  {
-	  lRowPtrs[ m_height - (i+1) ] = row_pointers+ i * lRowSize;
-  }
-  png_read_image(png_ptr, lRowPtrs);
-    fclose(fp);
-  png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
-  delete[] lRowPtrs;
-  return 0;
+	lRowPtrs = new png_bytep[m_height];
+	for(int i = 0 ; i < m_height; ++i)
+	{
+		lRowPtrs[ m_height - (i+1) ] = row_pointers+ i * lRowSize;
+	}
+	png_read_image(png_ptr, lRowPtrs);
+	fclose(fp);
+	png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
+	delete[] lRowPtrs;
 
 	return 0;
 }
