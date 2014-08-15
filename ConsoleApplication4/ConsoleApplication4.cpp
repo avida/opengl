@@ -50,7 +50,9 @@ public:
 		m_green_scale = 0.0f;
 		m_blue_scale = 0.0f;
         m_directionalLight.Color = Vector3f(1.0f, 1.0f, 1.0f);
-        m_directionalLight.AmbientIntensity = 1.0;
+        m_directionalLight.AmbientIntensity = 0.0f;
+        m_directionalLight.DiffuseIntensity = 0.0f;
+        m_directionalLight.Direction = Vector3f(1.0f, 0.0, 0.0);
     }
 
     ~Tutorial17()
