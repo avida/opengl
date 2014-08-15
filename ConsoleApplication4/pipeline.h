@@ -68,6 +68,8 @@ public:
     }
 
     const Matrix4f& GetTrans();
+	const Matrix4f& GetWVPTrans();
+	const Matrix4f& GetWorldTrans();
 
 private:
     Vector3f m_scale;
@@ -88,7 +90,8 @@ private:
         Vector3f Up;
     } m_camera;
 
-    Matrix4f m_transformation;
+    Matrix4f m_WVPtransformation;
+	Matrix4f m_WorldTransformation;
 };
 
 
