@@ -72,7 +72,10 @@ public:
         unsigned int Indices[] = { 0, 3, 1,
                                    1, 3, 2,
                                    2, 3, 0,
-                                   1, 2, 0 };
+                                   1, 2, 0,
+								   4,5,6,
+								   6,5,4
+									};
 
         CreateIndexBuffer(Indices, sizeof(Indices));
 
@@ -109,6 +112,7 @@ public:
         m_pGameCamera->OnRender();
 
         glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_DEPTH_BUFFER_BIT);
        
         m_scale += 0.01f;
 
@@ -121,6 +125,10 @@ public:
         const Matrix4f& WorldTransformation = p.GetWorldTrans();
         m_pEffect->SetWorldMatrix(WorldTransformation);
         m_pEffect->SetDirectionalLight(m_directionalLight);
+
+		m_pEffect->SetEyeWorldPos(m_pGameCamera->GetPos());
+		m_pEffect->SetMatSpecularIntensity(1.0f);
+		m_pEffect->SetMatSpecularPower(32);
         
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
@@ -131,7 +139,7 @@ public:
         glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)20);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IBO);
         m_pTexture->Bind(GL_TEXTURE0);
-        glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_INT, 0);
 
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);
@@ -200,10 +208,15 @@ private:
 
     void CreateVertexBuffer(const unsigned int* pIndices, unsigned int IndexCount)
     {
-        Vertex Vertices[4] = { Vertex(Vector3f(-1.0f, -1.0f, 0.5773f), Vector2f(0.0f, 0.0f)),
+        Vertex Vertices[7] = { Vertex(Vector3f(-1.0f, -1.0f, 0.5773f), Vector2f(0.0f, 0.0f)),
                                Vertex(Vector3f(0.0f, -1.0f, -1.15475f), Vector2f(0.5f, 0.0f)),
                                Vertex(Vector3f(1.0f, -1.0f, 0.5773f),  Vector2f(1.0f, 0.0f)),
-                               Vertex(Vector3f(0.0f, 1.0f, 0.0f),      Vector2f(0.5f, 1.0f)) };
+                               Vertex(Vector3f(0.0f, 1.0f, 0.0f),      Vector2f(0.5f, 1.0f)),
+							   Vertex(Vector3f(0.0f, 0.0f, 0.0f),	 Vector2f(0.0f, 0.0f)),
+							   Vertex(Vector3f(2.0f, 0.0f, -2.0f),	 Vector2f(1.0f, 0.0f)),
+							   Vertex(Vector3f(0.0f, 2.0f, -2.0f),	 Vector2f(0.0f, 1.0f))
+
+								};
         
         unsigned int VertexCount = ARRAY_SIZE_IN_ELEMENTS(Vertices);
 

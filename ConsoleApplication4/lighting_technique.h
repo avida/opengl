@@ -42,12 +42,22 @@ public:
     void SetWorldMatrix(const Matrix4f& WVP);
     void SetTextureUnit(unsigned int TextureUnit);
     void SetDirectionalLight(const DirectionalLight& Light);
+	
+	//specular lighting
+	void SetEyeWorldPos(const Vector3f& EyeWorldPos);
+    void SetMatSpecularIntensity(float Intensity);
+    void SetMatSpecularPower(float Power);
 
 private:
 
     GLuint m_WVPLocation;
     GLuint m_WorldMatrixLocation;
     GLuint m_samplerLocation;
+
+	//specular lighting
+	GLuint m_eyeWorldPosLocation;
+    GLuint m_matSpecularIntensityLocation;
+    GLuint m_matSpecularPowerLocation;
 
     struct {
         GLuint Color;

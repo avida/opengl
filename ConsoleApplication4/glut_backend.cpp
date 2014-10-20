@@ -127,7 +127,7 @@ void GLUTBackendRun(ICallbacks* pCallbacks)
     glFrontFace(GL_CW);
     glCullFace(GL_BACK);
     glEnable(GL_CULL_FACE);
-
+	glEnable(GL_DEPTH_TEST);
     s_pCallbacks = pCallbacks;
     InitCallbacks();
     glutMainLoop();
