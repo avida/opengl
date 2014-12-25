@@ -17,7 +17,7 @@ int LibPng::Load()
     char header[8];    // 8 is the maximum size that can be checked
 
     /* open file and test for it being a png */
-	printf("will be loaded %s\n",m_path);
+	printf("will be loaded %s\n",m_path.c_str());
 	FILE *fp = fopen(m_path.c_str(), "rb");
     if (!fp)
 	{
