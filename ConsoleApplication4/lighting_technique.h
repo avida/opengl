@@ -16,12 +16,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LIGHTING_TECHNIQUE_H
-#define	LIGHTING_TECHNIQUE_H
+#pragma once
 
-#include "common/technique.h"
+#include "position_technique.h"
 #include "math_3d.h"
 
+namespace GL
+{
 struct DirectionalLight
 {
     Vector3f Color;
@@ -30,7 +31,7 @@ struct DirectionalLight
     float DiffuseIntensity;
 };
 
-class LightingTechnique : public Technique
+class LightingTechnique : public PositionTechnique
 {
 public:
 
@@ -38,9 +39,6 @@ public:
 
     virtual bool Init();
 
-    void SetWVP(const Matrix4f& WVP);
-    void SetWorldMatrix(const Matrix4f& WVP);
-    void SetTextureUnit(unsigned int TextureUnit);
     void SetDirectionalLight(const DirectionalLight& Light);
 	
 	//specular lighting
@@ -49,11 +47,6 @@ public:
     void SetMatSpecularPower(float Power);
 
 private:
-
-    GLuint m_WVPLocation;
-    GLuint m_WorldMatrixLocation;
-    GLuint m_samplerLocation;
-
 	//specular lighting
 	GLuint m_eyeWorldPosLocation;
     GLuint m_matSpecularIntensityLocation;
@@ -67,5 +60,4 @@ private:
     } m_dirLightLocation;
 };
 
-
-#endif	/* LIGHTING_TECHNIQUE_H */
+}

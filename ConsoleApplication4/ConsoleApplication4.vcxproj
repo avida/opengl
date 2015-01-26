@@ -60,8 +60,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Home PC|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>g:\Projects\freeglut-2.8.1\include\;g:\Projects\glew-1.10.0\include\;$(ProjectDir)/include;$(IncludePath)</IncludePath>
-    <LibraryPath>g:\Projects\freeglut-2.8.1\lib\x86\Debug;g:\Projects\glew-1.10.0\lib\;$(ProjectDir)/lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>G:\boost_1_57_0;g:\Projects\freeglut-2.8.1\include\;g:\Projects\glew-1.10.0\include\;$(ProjectDir)/include;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\boost_1_57_0\stage\lib;g:\Projects\freeglut-2.8.1\lib\x86\Debug;g:\Projects\glew-1.10.0\lib\;$(ProjectDir)/lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -126,11 +126,16 @@
     <ClInclude Include="common\ogldev_types.h" />
     <ClInclude Include="common\ogldev_util.h" />
     <ClInclude Include="common\technique.h" />
+    <ClInclude Include="geometry.h" />
     <ClInclude Include="glut_backend.h" />
+    <ClInclude Include="gl_scene.h" />
     <ClInclude Include="LibPng.h" />
     <ClInclude Include="lighting_technique.h" />
     <ClInclude Include="math_3d.h" />
+    <ClInclude Include="mesh.h" />
     <ClInclude Include="pipeline.h" />
+    <ClInclude Include="position_technique.h" />
+    <ClInclude Include="Primitive.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
@@ -140,10 +145,14 @@
     <ClCompile Include="common\technique.cpp" />
     <ClCompile Include="ConsoleApplication4.cpp" />
     <ClCompile Include="glut_backend.cpp" />
+    <ClCompile Include="gl_scene.cpp" />
     <ClCompile Include="LibPng.cpp" />
     <ClCompile Include="lighting_technique.cpp" />
     <ClCompile Include="math_3d.cpp" />
+    <ClCompile Include="mesh.cpp" />
     <ClCompile Include="pipeline.cpp" />
+    <ClCompile Include="position_technique.cpp" />
+    <ClCompile Include="primitive.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="lighting.fs" />

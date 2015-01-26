@@ -15,9 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-#ifndef TECHNIQUE_H
-#define	TECHNIQUE_H
+#pragma once
 
 #include <list>
 #include <GL/glew.h>
@@ -51,6 +49,3 @@ private:
     typedef std::list<GLuint> ShaderObjList;
     ShaderObjList m_shaderObjList;
 };
-
-#endif	/* TECHNIQUE_H */
-

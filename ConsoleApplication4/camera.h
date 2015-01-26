@@ -20,7 +20,10 @@
 #define	CAMERA_H
 
 #include "math_3d.h"
+#include <boost/shared_ptr.hpp>
 
+class Camera;
+typedef boost::shared_ptr<Camera> CameraPtr;
 
 class Camera
 {

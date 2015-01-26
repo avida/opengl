@@ -12,6 +12,8 @@
 #include "lighting_technique.h"
 #include "glut_backend.h"
 
+#include "geometry.h"
+
 #define MOUSE_DOWN 0
 #define MOUSE_UP 1
 
@@ -19,23 +21,7 @@
 #define WINDOW_HEIGHT 768
 
 #define CIRCLE_SCALE(x) x >= 1 ? x=0 : x=x
-
-struct Vertex
-{
-    Vector3f m_pos;
-    Vector2f m_tex;
-    Vector3f m_normal;
-
-    Vertex() {}
-
-    Vertex(Vector3f pos, Vector2f tex)
-    {
-        m_pos = pos;
-        m_tex = tex;
-        m_normal = Vector3f(0.0f, 0.0f, 0.0f);
-    }
-}; 
-
+using namespace GL;
 class Tutorial17 : public ICallbacks
 {
 public:
@@ -224,6 +210,7 @@ private:
 
         glGenBuffers(1, &m_VBO);
         glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+		cout<< "size is " << sizeof(Vector2f) << endl;
         glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
     }
 

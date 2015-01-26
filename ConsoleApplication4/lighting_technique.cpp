@@ -18,31 +18,19 @@
 
 #include "lighting_technique.h"
 
+namespace GL
+{
+
 LightingTechnique::LightingTechnique()
 {   
 }
 
 bool LightingTechnique::Init()
 {
-    if (!Technique::Init()) {
-        return false;
-    }
-
-    if (!AddShader(GL_VERTEX_SHADER, "lighting.vs")) {
-        return false;
-    }
-
-    if (!AddShader(GL_FRAGMENT_SHADER, "lighting.fs")) {
-        return false;
-    }
-
-    if (!Finalize()) {
-        return false;
-    }
-
-    m_WVPLocation = GetUniformLocation("gWVP");
-    m_WorldMatrixLocation = GetUniformLocation("gWorld");
-    m_samplerLocation = GetUniformLocation("gSampler");
+	if (!PositionTechnique::Init())
+	{
+		return false;
+	}
     m_dirLightLocation.Color = GetUniformLocation("gDirectionalLight.Color");
     m_dirLightLocation.AmbientIntensity = GetUniformLocation("gDirectionalLight.AmbientIntensity");
     m_dirLightLocation.Direction = GetUniformLocation("gDirectionalLight.Direction");
@@ -53,9 +41,6 @@ bool LightingTechnique::Init()
     m_matSpecularPowerLocation = GetUniformLocation("gSpecularPower");
 
     if (m_dirLightLocation.AmbientIntensity == 0xFFFFFFFF ||
-        m_WVPLocation == 0xFFFFFFFF ||
-        m_WorldMatrixLocation == 0xFFFFFFFF ||
-        m_samplerLocation == 0xFFFFFFFF ||
         m_dirLightLocation.Color == 0xFFFFFFFF ||
         m_dirLightLocation.DiffuseIntensity == 0xFFFFFFFF ||
         m_dirLightLocation.Direction == 0xFFFFFFFF ||
@@ -67,24 +52,6 @@ bool LightingTechnique::Init()
 
     return true;
 }
-
-void LightingTechnique::SetWVP(const Matrix4f& WVP)
-{
-    glUniformMatrix4fv(m_WVPLocation, 1, GL_TRUE, (const GLfloat*)WVP.m);    
-}
-
-
-void LightingTechnique::SetWorldMatrix(const Matrix4f& WorldInverse)
-{
-    glUniformMatrix4fv(m_WorldMatrixLocation, 1, GL_TRUE, (const GLfloat*)WorldInverse.m);
-}
-
-
-void LightingTechnique::SetTextureUnit(unsigned int TextureUnit)
-{
-    glUniform1i(m_samplerLocation, TextureUnit);
-}
-
 
 void LightingTechnique::SetDirectionalLight(const DirectionalLight& Light)
 {
@@ -109,4 +76,5 @@ void LightingTechnique::SetMatSpecularIntensity(float Intensity)
 void LightingTechnique::SetMatSpecularPower(float Power)
 {
     glUniform1f(m_matSpecularPowerLocation, Power);
+}
 }
