@@ -137,6 +137,7 @@
     <ClInclude Include="position_technique.h" />
     <ClInclude Include="Primitive.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="technique_factory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="pipeline.cpp" />
     <ClCompile Include="position_technique.cpp" />
     <ClCompile Include="primitive.cpp" />
+    <ClCompile Include="technique_factory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="lighting.fs" />
